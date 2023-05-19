@@ -9,7 +9,7 @@ public class GestionarComida {
     private int cantidad;
     public int[] manzana;
     private List<int[]> snake;
-    private boolean exist = true;
+    private boolean existeComida = true;
 
     public GestionarComida(int cantidad){
         this.cantidad = cantidad;
@@ -18,7 +18,7 @@ public class GestionarComida {
 
     public void generarManzana(List<int[]> snake){
         this.snake = snake;
-        if(!exist){
+        if(!existeComida){
             int a = (int) (Math.random()*cantidad);
             int b = (int) (Math.random()*cantidad);
             manzana[0]=a;
@@ -28,11 +28,11 @@ public class GestionarComida {
                     generarManzana(snake);
                 }
             }
-            exist = true;
+            existeComida = true;
         }
     }
 
     public void cambiarEstado(){
-        exist=false;
+        existeComida=false;
     }
 }

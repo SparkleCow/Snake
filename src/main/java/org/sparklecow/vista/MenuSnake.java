@@ -1,55 +1,106 @@
 package org.sparklecow.vista;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URL;
 
-public class MenuSnake extends JFrame implements ActionListener {
+public class MenuSnake extends JFrame{
 
-    private JButton btnIniciar, btnVerPuntaje;
+    //private JButton btnIniciar, btnVerPuntaje;
+    private URL fondo;
+    private Image icon;
+    private JPanel panel_1;
     public MenuSnake(){
         this.setTitle("Snake");
         this.setLayout(null);
         this.setVisible(true);
-        getContentPane().setBackground(Color.GRAY);
+        getContentPane().setBackground(new Color(165, 204, 122));
         this.setSize(815, 840);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        iniciarElementos();
-    }
 
-    public void iniciarElementos(){
+        JPanel panel = new JPanel();
+        panel.setBounds(0,0, 815, 840);
+        panel.setBackground(new Color(220, 255, 182));
+        panel.setLayout(null);
+        this.add(panel);
 
-        JPanel panel1 = new JPanel();
-        panel1.setBounds(0,0, 250, 840);
-        panel1.setBackground(new Color(220, 255, 182));
-        panel1.setLayout(null);
-        this.add(panel1);
-
-        JPanel panel2 = new JPanel();
-        panel2.setBounds(250, 0, 590, 840);
-        panel2.setBackground(new Color(165, 204, 122));
-        panel2.setLayout(null);
-        this.add(panel2);
-
-        btnIniciar = new JButton("Iniciar juego");
-        btnVerPuntaje = new JButton("Ver mejor puntaje");
-        panel1.add(btnVerPuntaje);
-        panel1.add(btnIniciar);
+        JPanel btnIniciar = new JPanel();
         btnIniciar.setBounds(50, 275, 150, 70);
-        btnVerPuntaje.setBounds(50, 400, 150, 70);
-        btnIniciar.addActionListener(this);
-        btnVerPuntaje.addActionListener(this);
+        btnIniciar.setBackground(new Color(240, 215, 182));
+        btnIniciar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e){
+                MenuSnake.this.dispose();
+                VentanaJuego ventanaJuego = new VentanaJuego();
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnIniciar.setBackground(Color.red);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnIniciar.setBackground(Color.white);
+            }
+
+        });
+        panel.add(btnIniciar);
+
+        JPanel btnCerrar = new JPanel();
+        btnCerrar.setBounds(50, 400, 150, 70);
+        btnCerrar.setBackground(new Color(240, 215, 182));
+        btnCerrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e){
+                MenuSnake.this.dispose();
+                VentanaJuego ventanaJuego = new VentanaJuego();
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnCerrar.setBackground(Color.red);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnCerrar.setBackground(Color.white);
+            }
+
+        });
+        panel.add(btnIniciar);
+        panel.add(btnCerrar);
+
+        panel_1 = new JPanel();
+        panel_1.setBounds(300, 300, 300, 300);
+        panel_1.setBackground(new Color(255, 127, 80));
+        panel.add(panel_1);
+        panel_1.setLayout(null);
+
+        fondo = this.getClass().getResource("/imagenes/qqq.jpg");
+        assert fondo != null;
+        icon = new ImageIcon(fondo).getImage();
     }
 
-    @Override
+    public void paintComponent(Graphics g){
+        g.drawImage(icon, 0,0, panel_1.getWidth(), panel_1.getHeight(), null );
+
+    }
+
+    /*@Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnVerPuntaje){
             System.exit(1);
         }if(e.getSource() == btnIniciar){
-            this.dispose();
-            PrimerMapa primerMapa = new PrimerMapa();
+
         }
     }
+
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        final String nombre = "";
+    }*/
 }

@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class PrimerMapa extends JFrame implements KeyListener{
+public class VentanaJuego extends JFrame implements KeyListener{
 
     private final PanelTablero panelTablero;
     private final PanelSnake panelSnake;
-    public PrimerMapa(){
+    public VentanaJuego(){
 
         this.setTitle("Snake");
         this.setLayout(null);
@@ -34,16 +34,16 @@ public class PrimerMapa extends JFrame implements KeyListener{
     public void keyTyped(KeyEvent e) {
         switch (e.getKeyChar()) {
             case 'd', 'D' -> {
-                panelSnake.modificarProximaDireccion("right");
+                panelSnake.moverSerpiente.modificarProximaDireccion("right");
             }
             case 'w', 'W' -> {
-                panelSnake.modificarProximaDireccion("up");
+                panelSnake.moverSerpiente.modificarProximaDireccion("up");
             }
             case 's', 'S' -> {
-                panelSnake.modificarProximaDireccion("down");
+                panelSnake.moverSerpiente.modificarProximaDireccion("down");
             }
             case 'a', 'A' -> {
-                panelSnake.modificarProximaDireccion("left");
+                panelSnake.moverSerpiente.modificarProximaDireccion("left");
             }
         }
     }

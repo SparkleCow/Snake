@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 public class VentanaMuerte extends JDialog implements ActionListener {
 
     private JButton btnRegreso, btnVolverIntentar;
-    private PrimerMapa primerMapa;
-    public VentanaMuerte(PrimerMapa primerMapa) {
-        this.primerMapa = primerMapa;
+    private VentanaJuego ventanaJuego;
+    public VentanaMuerte(VentanaJuego ventanaJuego) {
+        this.ventanaJuego = ventanaJuego;
         this.setTitle("Snake");
         this.setLayout(null);
         this.setSize(400, 200);
@@ -36,13 +36,13 @@ public class VentanaMuerte extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnRegreso){
-            primerMapa.dispose();
+            ventanaJuego.dispose();
             this.dispose();
             MenuSnake menu = new MenuSnake();
         }if(e.getSource() == btnVolverIntentar){
             this.dispose();
-            primerMapa.dispose();
-            primerMapa = new PrimerMapa();
+            ventanaJuego.dispose();
+            ventanaJuego = new VentanaJuego();
         }
     }
 }

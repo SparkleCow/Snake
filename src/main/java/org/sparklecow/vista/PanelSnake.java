@@ -13,19 +13,14 @@ public class PanelSnake extends JPanel implements Runnable{
 
     private Thread hilo;
     private GestionarComida gestionarComida;
-    private PrimerMapa primerMapa;
-    private VentanaMuerte ventanaMuerte;
+    private VentanaJuego ventanaJuego;
     public GestionarSerpiente moverSerpiente;
     private CrecerSerpiente crecerSerpiente;
     private int tamaño, tamañoUnidad, cantidad;
     public int velocidad = 150;
-    public String direccion = "right";
-    public String proximaDireccion = "right";
 
-
-    public PanelSnake(int tamaño, int cantidad, PrimerMapa primerMapa) {
-
-        this.primerMapa = primerMapa;
+    public PanelSnake(int tamaño, int cantidad, VentanaJuego ventanaJuego) {
+        this.ventanaJuego = ventanaJuego;
         this.tamaño = tamaño;
         this.cantidad = cantidad;
         this.setOpaque(false);
@@ -34,28 +29,8 @@ public class PanelSnake extends JPanel implements Runnable{
         this.moverSerpiente = new GestionarSerpiente(cantidad, this);
         this.gestionarComida = new GestionarComida(cantidad);
         this.crecerSerpiente = new CrecerSerpiente(moverSerpiente, gestionarComida);
-
         hilo = new Thread(this);
         hilo.start();
-    }
-
-    public void modificarProximaDireccion(String direccion){
-        if((proximaDireccion.equals("right") || proximaDireccion.equals("left")) && (direccion.equals("up")||direccion.equals("down"))){
-            this.proximaDireccion = direccion;
-        }if((proximaDireccion.equals("up")||proximaDireccion.equals("down")) && (direccion.equals("right")||direccion.equals("left"))){
-            this.proximaDireccion = direccion;
-        }
-    }
-
-    public void cambiarDireccion(){
-        this.direccion=proximaDireccion;
-    }
-
-    public void getVentanaMuerte(){
-        if(moverSerpiente.muerto){
-            ventanaMuerte = new VentanaMuerte(primerMapa);
-            ventanaMuerte.setVisible(true);
-        }
     }
 
     @Override
@@ -76,9 +51,8 @@ public class PanelSnake extends JPanel implements Runnable{
             moverSerpiente.avanzar();
             crecerSerpiente.crecerSerpiente();
             repaint();
-            getVentanaMuerte();
+            moverSerpiente.getVentanaMuerte(ventanaJuego);
             gestionarComida.generarManzana(moverSerpiente.snake);
-
             try {
                 Thread.sleep(sleep);
             } catch (InterruptedException e) {
