@@ -36,24 +36,21 @@ public class PrimerMapa extends JFrame implements KeyListener{
     public void keyTyped(KeyEvent e) {
         switch (e.getKeyChar()) {
             case 'd', 'D' -> {
-                if (panelSnake.direccion != "left") {
-                    panelSnake.direccion = "right";
-                }
+                    panelSnake.modificarProximaDireccion("right");
+                    System.out.println("right");
             }
             case 'w', 'W' -> {
-                if (panelSnake.direccion != "down") {
-                    panelSnake.direccion = "up";
-                }
+                    panelSnake.modificarProximaDireccion("up");
+                    System.out.println("up");
+
             }
             case 's', 'S' -> {
-                if (panelSnake.direccion != "up") {
-                    panelSnake.direccion = "down";
-                }
+                    panelSnake.modificarProximaDireccion("down");
+                    System.out.println("down");
             }
             case 'a', 'A' -> {
-                if (panelSnake.direccion != "right") {
-                    panelSnake.direccion = "left";
-                }
+                    panelSnake.modificarProximaDireccion("left");
+                    System.out.println("left");
             }
         }
     }

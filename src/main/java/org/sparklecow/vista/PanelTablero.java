@@ -11,13 +11,13 @@ public class PanelTablero extends JPanel {
         this.cantidad = cantidad;
         this.tamañoUnidad = tamaño/cantidad;
         System.out.println(tamañoUnidad);
-        this.setBackground(Color.GRAY);
+        this.setBackground(Color.BLACK);
     }
 
     @Override
     public void paint(Graphics gr){
         super.paint(gr);
-        gr.setColor(Color.BLACK);
+        gr.setColor(new Color(165, 105, 189));
         for(int i=0; i<cantidad; i++){
             for(int j=0; j<cantidad; j++){
                 gr.fillRect(i*tamañoUnidad, j*tamañoUnidad, tamañoUnidad-1,tamañoUnidad-1);

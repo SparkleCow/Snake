@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 public class MenuSnake extends JFrame implements ActionListener {
 
-    private PrimerMapa primerMapa;
     private JButton btnIniciar, btnVerPuntaje;
     public MenuSnake(){
         this.setTitle("Snake");
@@ -50,7 +49,7 @@ public class MenuSnake extends JFrame implements ActionListener {
             System.exit(1);
         }if(e.getSource() == btnIniciar){
             this.dispose();
-            primerMapa = new PrimerMapa();
+            PrimerMapa primerMapa = new PrimerMapa();
         }
     }
 }

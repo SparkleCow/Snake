@@ -1,10 +1,11 @@
 package org.sparklecow.vista;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaMuerte extends JFrame implements ActionListener {
+public class VentanaMuerte extends JDialog implements ActionListener {
 
     private JButton btnRegreso, btnVolverIntentar;
     private PrimerMapa primerMapa;
@@ -12,9 +13,12 @@ public class VentanaMuerte extends JFrame implements ActionListener {
         this.primerMapa = primerMapa;
         this.setTitle("Snake");
         this.setLayout(null);
-        this.setSize(300, 150);
+        this.setSize(400, 200);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setModal(true);
+        this.setUndecorated(true);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
         iniciarElementos();
     }
 
@@ -23,8 +27,8 @@ public class VentanaMuerte extends JFrame implements ActionListener {
         btnVolverIntentar = new JButton("Volver a intentar");
         this.add(btnVolverIntentar);
         this.add(btnRegreso);
-        btnRegreso.setBounds(30, 55, 100, 50);
-        btnVolverIntentar.setBounds(150, 55, 100, 50);
+        btnRegreso.setBounds(30, 75, 150, 50);
+        btnVolverIntentar.setBounds(205, 75, 150, 50);
         btnVolverIntentar.addActionListener(this);
         btnRegreso.addActionListener(this);
     }
