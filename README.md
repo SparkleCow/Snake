@@ -11,7 +11,7 @@
 This traditional and iconic game was recreated in java with Threads and basically with Swing library.  
 Our snake has a new function that speeds up during its tour.
 <br/><br/>
-The main idea about the code was to try to separate each function, role or responsability in a specific class
+The main idea about the code was to try to separate each function, role or responsability in a specific class (SOLID principles)
 This project currently is in process so, the next step is to add some many new functions, features and refactoring code. 
 If you have any idea, you can let me know. Also, be free to use the code to any purpose. <br/><br/>
 
@@ -31,7 +31,7 @@ One you start game, you can move with A,S,D,W keys, plus you can speed up with "
 </div>
 <br/><br/>
 
-## How looks the project ? 
+## How does the project look like? 
 <br/><br/>
 
 <div align = "center">
